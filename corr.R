@@ -12,6 +12,6 @@ corr <- function(directory, threshold = 0) {
 	## just a test to validate multi-add's within a single commit.
 	## if it worked, this file will have the lines dog and cat below (no fish)
 	dog
-	fish
+	cat
 }
 
