@@ -1,3 +1,6 @@
+# QMods:
+# 20130116 - Updated to remove cruft comments near end of function.
+#
 corr <- function(directory, threshold = 0) {
         ## 'directory' is a character vector of length 1 indicating
         ## the location of the CSV files
@@ -28,14 +31,6 @@ corr <- function(directory, threshold = 0) {
 					rval[rowIdx] <- temp[1,1]
 					rowIdx <- rowIdx + 1
 				}
-        	
-        		
-        		# Output the count of complete cases to the rval data frame.
-        		# Note: This works because sum of a vector of t/f values returns
-        		#         the count of TRUE values.
-        		#rval[rowIdx,"id"] <- x
-        		#rval[rowIdx,"nobs"] <- sum(candidates)
-        		#rowIdx <- rowIdx + 1
         
         } # for id
         
