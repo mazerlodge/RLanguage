@@ -4,7 +4,7 @@ best <- function(state, outcome) {
 	##
 	
 	## Read outcome data
-	f <- "outcome-of-care-measures.csv"
+	f <- "./Wk3Data/outcome-of-care-measures.csv"
 	outcomeData <- read.csv(f, colClasses="character")
 	
 	## Check that state and outcome are valid
