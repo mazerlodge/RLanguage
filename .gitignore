@@ -1,0 +1,14 @@
+#
+# ignore test output files
+*testoutput1.txt
+*testoutput2.txt
+*testoutput3.txt
+# 
+# ignore Workspace saves
+.RData
+.Rapp.history
+.Rhistory
+#
+# ignore data zips
+*.zip
+
