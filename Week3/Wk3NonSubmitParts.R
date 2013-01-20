@@ -96,3 +96,32 @@ part2b <- function(inFile) {
 	return(minMaxRange)
 	
 }
+
+distinctStateList <- function(rawData) {
+	
+	# get a list of distinct states from the outcome data file
+	rawList <- rawData[,7]
+	stateList <- c()
+	
+	for(aState in rawList) {
+	
+		# is this state all ready known
+		bStateFound <- FALSE
+		for (existingState in stateList) {
+			if (aState == existingState) {
+				bStateFound <- TRUE
+				break
+			}
+		}
+		
+		# if the state wasn't known, add it.
+		if (!bStateFound) {
+			stateList[length(stateList)+1] <- aState
+		}
+
+	}
+
+	return(stateList)
+	
+}
+
