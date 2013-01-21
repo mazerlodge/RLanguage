@@ -109,3 +109,42 @@ getRateForProvider <- function(ds, pid, colIdx) {
 	return(rval)
 	
 }
+
+fragment <- function() {
+
+	# this code solves the wrong problem for part 7, always returning top rank for each state
+	
+	idx <- 1
+	for (x in 1:nrow(outcomeData)) {
+
+		# skip this entry if no value was provided
+		if (is.na(outcomeData[x,targetColumn])) next
+		if (is.nan(outcomeData[x,targetColumn])) next
+		if (outcomeData[x,targetColumn] == "Not Available") next
+		
+		# get the index for the state this value applies to, and current low val for that state
+		stateIdx <- getIndexForState(distinctStates, outcomeData[x,7])
+		lowVal <- targetHospitals[stateIdx,3]
+
+		testVal <- as.numeric(outcomeData[x,targetColumn])
+		
+		if (testVal == lowVal) {
+			# this hopital tied, use name alpha order to determine winner
+			nameList = c(targetHospitals[stateIdx,1], outcomeData[x,2])
+			sortOrder <- order(nameList)
+			
+			if (sortOrder[2] == 1) {
+				# The new name bumped the old name, use the new one instead
+				targetHospitals[stateIdx,1] <- outcomeData[x,2]
+			}
+		}
+		
+		if(testVal < lowVal) {
+			# this hospital is better for this state, use it instead
+			targetHospitals[stateIdx,1] <- outcomeData[x,2]
+			targetHospitals[stateIdx,3] <- testVal
+				
+		}
+	}
+
+}
